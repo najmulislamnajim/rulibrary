@@ -22,9 +22,12 @@ def add_to_wishlist(request,book_id):
     
 def wishlist(request):
     user=request.user 
+    model=WishlistModel.objects.get_or_create(user=user)
+    books=None
     model=WishlistModel.objects.filter(user=user)
     for item in model:
-        books=item.book.all()
+        if item.book:
+            books=item.book.all()
     page=request.GET.get('page')
     paginator=Paginator(books,9)
     paged_books=paginator.get_page(page)

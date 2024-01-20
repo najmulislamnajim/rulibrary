@@ -15,8 +15,8 @@
         <div style="margin-top: 20px;">
             <div class="col-md-4" style="margin: auto;">
                 <p style="margin-top:30px;"><span class="font-weight-bold">Available Books:</span> {{book.stock}}</p> 
-                <a href="#" class="btn btn-block btn-success">Borrow </a>
-                <a href="#" class="btn btn-block btn-info">Add to Wishlist </a>
+                <a href="{% url 'borrow' book.id %}" class="btn btn-block btn-success">Borrow </a>
+                <a href="{% url 'add_wishlist' book.id %}" class="btn btn-block btn-info">Add to Wishlist </a>
             </div>
         </div>
   

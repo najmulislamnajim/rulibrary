@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import GenreModel,BorrowModel,BookModel
 from django.core.paginator import Paginator
+from review.models import ReviewModel
 
 # Create your views here.
 def books(request,genre_slug=None):
@@ -28,8 +29,9 @@ def books(request,genre_slug=None):
 
 def bookDetails(request,book_slug):
     book=BookModel.objects.get(slug=book_slug)
+    reviews=ReviewModel.objects.filter(book=book)
     genres=book.genre.all()
-    return render(request,'book_details.html',{'book':book,'genres':genres})
+    return render(request,'book_details.html',{'book':book,'genres':genres,'reviews':reviews})
 
 
 

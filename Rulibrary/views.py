@@ -11,5 +11,5 @@ def home(request):
             return render(request,'search_results.html',{'results':results})
         
         
-    books=BookModel.objects.all()[:9]
+    books=BookModel.objects.filter(availability=True)[:9]
     return render(request,'base.html',{'genres':genres,'books':books})

@@ -46,5 +46,6 @@ def return_book(request,book_id):
     for item in model:
         item.book.stock+=1
         item.book.save()
+        b_id=item.book.id
     model.delete()
-    return redirect('borrow_list')
+    return redirect('review',book_id=b_id)
